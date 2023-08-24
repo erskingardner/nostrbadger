@@ -6,10 +6,11 @@
 
     const ndk = new NDKSvelte({
         explicitRelayUrls: [
-            "wss://nos.lol",
-            "wss://relay.snort.social",
-            "wss://relay.damus.io",
-            "wss://relay.nostr.band",
+            "ws://localhost:8080",
+            // "wss://nos.lol",
+            // "wss://relay.snort.social",
+            // "wss://relay.damus.io",
+            // "wss://relay.nostr.band",
         ],
     });
 

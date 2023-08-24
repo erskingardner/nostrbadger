@@ -8,6 +8,9 @@ export default {
                 "honeybadger-orange": "#f33a3e",
                 "honeybadger-black": "#0b0a0b",
             },
+            backgroundImage: {
+                honeybadger: "url('/images/honeybadger-fire.webp')",
+            },
             fontFamily: {
                 contrail: ["Contrail One"],
             },

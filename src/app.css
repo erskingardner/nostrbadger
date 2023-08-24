@@ -14,11 +14,12 @@ body {
 }
 
 .honeybadgerImageContainer {
-    @apply fixed w-[1049px] h-[483px] md:w-full md:h-full -right-40 bottom-0;
+    @apply fixed w-screen h-screen bg-cover bg-no-repeat bg-honeybadger;
+    background-position: right 20% bottom;
 }
 
-img.honeybadgerFire {
-    @apply absolute bottom-0;
+.honeybadgerImageContainer img {
+    @apply w-full h-screen block top-1/2 -translate-y-1/2 absolute object-cover right-80 overflow-visible md:object-cover;
 }
 
 h1.title {
