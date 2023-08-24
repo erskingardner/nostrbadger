@@ -38,6 +38,7 @@
 		"@nostr-dev-kit/ndk": "^0.8.21",
 		"@nostr-dev-kit/ndk-svelte": "^0.8.21",
 		"@nostr-dev-kit/ndk-svelte-components": "^0.8.21",
+		"@sveltejs/adapter-vercel": "^3.0.3",
 		"lucide-svelte": "^0.268.0",
 		"nostr-tools": "^1.14.2"
 	}
