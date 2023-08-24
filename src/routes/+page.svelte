@@ -13,7 +13,9 @@
         ],
     });
 
-    ndk.connect().then(() => console.log("NDK Connected"));
+    ndk.connect()
+        .then(() => console.log("NDK Connected"))
+        .catch(() => console.log("NDK connection failed"));
 
     // Generate a new identity
     const privateKey = generatePrivateKey();
