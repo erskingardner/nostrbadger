@@ -9,7 +9,7 @@ export default {
                 "honeybadger-black": "#0b0a0b",
             },
             backgroundImage: {
-                honeybadger: "url('/images/honeybadger-fire.webp')",
+                honeybadger: "url('/images/honeybadger-fire-1400.webp')",
             },
             fontFamily: {
                 contrail: ["Contrail One"],
