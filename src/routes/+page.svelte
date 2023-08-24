@@ -38,7 +38,7 @@
     );
 
     // Publish a question event
-    function publishQuestion(event: any): void {
+    async function publishQuestion(event: any): Promise<void> {
         const formData = new FormData(event.target);
 
         const question = new NDKEvent(ndk, {
@@ -49,7 +49,7 @@
             tags: [["t", "bh2023askNostrTesting"]],
         });
 
-        question
+        await question
             .publish()
             .then(() => event.target.reset())
             .catch((error) => {
@@ -58,7 +58,7 @@
     }
 
     // Publish upvote (reaction) events
-    function upvoteQuestion(questionId: string): void {
+    async function upvoteQuestion(questionId: string): Promise<void> {
         const upvote = new NDKEvent(ndk, {
             kind: NDKKind.Reaction,
             pubkey: pubkey,
@@ -70,7 +70,7 @@
             ],
         });
 
-        upvote.publish().catch((error) => {
+        await upvote.publish().catch((error) => {
             console.error(error);
         });
     }
