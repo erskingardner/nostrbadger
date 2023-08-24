@@ -1,0 +1,64 @@
+@import url(https://fonts.bunny.net/css?family=contrail-one:400);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.contentContainer {
+    @apply prose prose-lg lg:prose-2xl max-w-none bg-white/40 backdrop-blur-md p-4 lg:my-6 lg:rounded-lg;
+}
+
+img.honeybadgerFire {
+    @apply fixed w-full h-full object-none overflow-visible right-full top-1/3 md:top-40 md:right-1/2 lg:right-40;
+}
+
+h1.title {
+    @apply font-contrail uppercase tracking-tight text-center text-honeybadger-orange mb-6 lg:text-7xl;
+    -webkit-text-stroke: 1px #0b0a0b;
+    text-shadow: 2px 4px 0 #0b0a0b;
+}
+
+.primaryButton {
+    @apply bg-honeybadger-orange hover:bg-honeybadger-orange/70 border-2 lg:border-2 border-honeybadger-black text-honeybadger-black font-contrail px-2 pt-1 uppercase;
+    box-shadow: 4px 4px 0px #0b0a0b;
+}
+
+form {
+    @apply w-full flex flex-col gap-4 py-8 lg:w-2/3 lg:mx-auto;
+}
+
+form textarea {
+    @apply text-xl;
+}
+
+.questionContainer {
+    @apply flex flex-col gap-2 mx-auto lg:w-2/3;
+}
+
+.question {
+    @apply border border-honeybadger-black rounded-md p-4 bg-white/40 flex flex-row gap-4 items-start;
+}
+
+.question-meta {
+    @apply flex flex-col gap-2 items-center;
+}
+
+.upvoteButton {
+    @apply flex flex-col items-center gap-0 p-0;
+}
+
+.upvoteButton:hover svg {
+    @apply fill-honeybadger-orange;
+}
+
+.upvoteCount {
+    @apply font-semibold text-xl -mt-2;
+}
+
+.avatar {
+    @apply w-16 h-16 rounded-full shadow-md border border-honeybadger-black my-0 relative top-1 bg-honeybadger-purple/70;
+}
+
+.waitingMessage {
+    @apply text-center animate-pulse;
+}
