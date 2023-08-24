@@ -6,16 +6,17 @@
 
     const ndk = new NDKSvelte({
         explicitRelayUrls: [
-            "wss://nos.lol",
-            "wss://relay.snort.social",
-            "wss://relay.damus.io",
-            "wss://relay.nostr.band",
+            "ws://localhost:8080",
+            // "wss://nos.lol",
+            // "wss://relay.snort.social",
+            // "wss://relay.damus.io",
+            // "wss://relay.nostr.band",
         ],
     });
 
     ndk.connect()
         .then(() => console.log("NDK Connected"))
-        .catch(() => console.log("NDK connection failed"));
+        .catch((error) => console.error("NDK connection failed", error));
 
     // Generate a new identity
     const privateKey = generatePrivateKey();
@@ -28,13 +29,13 @@
     // Set up a subscription to fetch events
     const questions = ndk.storeSubscribe(
         { kinds: [NDKKind.Text], "#t": ["bh2023askNostrTesting"] },
-        { autoStart: true, closeOnEose: false }
+        { closeOnEose: false }
     );
 
     // Set up a subscription to fetch upvotes
     const upvotes = ndk.storeSubscribe(
         { kinds: [NDKKind.Reaction], "#t": ["bh2023askNostrTesting"] },
-        { autoStart: true, closeOnEose: false }
+        { closeOnEose: false }
     );
 
     // Publish a question event
