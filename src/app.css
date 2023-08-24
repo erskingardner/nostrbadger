@@ -15,7 +15,7 @@ body {
 
 .honeybadgerImageContainer {
     @apply fixed w-screen h-screen bg-cover bg-no-repeat bg-honeybadger;
-    background-position: right 20% bottom;
+    background-position: right 20% top;
 }
 
 .honeybadgerImageContainer img {
