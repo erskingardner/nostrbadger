@@ -4,6 +4,7 @@
     import { generatePrivateKey, getPublicKey } from "nostr-tools";
     import { ArrowBigUp } from "lucide-svelte";
     import { onDestroy } from "svelte";
+    import { browser } from "$app/environment";
 
     const ndk = new NDKSvelte({
         explicitRelayUrls: [
@@ -112,7 +113,7 @@
                         </span>
                     </button>
                 </div>
-                <div>{question.content}</div>
+                <div class="questionContent">{question.content}</div>
             </div>
         {/each}
     {:else}

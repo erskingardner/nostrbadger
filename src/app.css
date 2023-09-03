@@ -53,6 +53,10 @@ form textarea {
     @apply flex flex-col gap-2 items-center;
 }
 
+.questionContent {
+    @apply break-all;
+}
+
 .upvoteButton {
     @apply flex flex-col items-center gap-0 p-0;
 }
