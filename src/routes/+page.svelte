@@ -66,6 +66,23 @@
         questions.unsubscribe();
         upvotes.unsubscribe();
     });
+
+    $: {
+        $questions = $questions.sort((a, b) => {
+            const aLikeCount = $upvotes.filter(
+                (upvote) =>
+                    upvote.getMatchingTags("e").length > 0 &&
+                    upvote.getMatchingTags("e")[0][1] === a.id
+            ).length;
+            const bLikeCount = $upvotes.filter(
+                (upvote) =>
+                    upvote.getMatchingTags("e").length > 0 &&
+                    upvote.getMatchingTags("e")[0][1] === b.id
+            ).length;
+
+            return bLikeCount - aLikeCount;
+        });
+    }
 </script>
 
 <h1 class="title">Ask NostrBadger</h1>
