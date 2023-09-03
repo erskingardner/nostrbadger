@@ -49,7 +49,7 @@
 
     async function upvoteQuestion(questionId: string) {
         const upvote = new NDKEvent(ndk, {
-            kind: NDKKind.Text,
+            kind: NDKKind.Reaction,
             created_at: Math.floor(new Date().getTime() / 1000),
             content: "+",
             tags: [
