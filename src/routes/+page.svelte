@@ -16,10 +16,34 @@
 
     ndk.connect();
 
+    const privateKey = generatePrivateKey();
+    const pubkey = getPublicKey(privateKey);
+
+    const signer = new NDKPrivateKeySigner(privateKey);
+    ndk.signer = signer;
+
     const questions = ndk.storeSubscribe(
         { kinds: [NDKKind.Text], "#t": ["hb2023askNostr"] },
         { closeOnEose: false }
     );
+
+    async function publishQuestion(event: any) {
+        const formData = new FormData(event.target);
+
+        const question = new NDKEvent(ndk, {
+            kind: NDKKind.Text,
+            created_at: Math.floor(new Date().getTime() / 1000),
+            content: formData.get("question") as string,
+            tags: [["t", "hb2023askNostr"]],
+            pubkey: pubkey,
+        });
+
+        await question.publish();
+    }
+
+    onDestroy(() => {
+        questions.unsubscribe();
+    });
 </script>
 
 <h1 class="title">Ask NostrBadger</h1>
