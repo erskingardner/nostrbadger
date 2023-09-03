@@ -1,5 +1,8 @@
 {
     "extends": "./.svelte-kit/tsconfig.json",
+    "typingOptions": {
+        "enableAutoDiscovery": true
+    },
     "compilerOptions": {
         "allowJs": true,
         "checkJs": true,
