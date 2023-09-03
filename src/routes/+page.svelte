@@ -27,6 +27,11 @@
         { closeOnEose: false }
     );
 
+    const upvotes = ndk.storeSubscribe(
+        { kinds: [NDKKind.Reaction], "#t": ["hb2023askNostr"] },
+        { closeOnEose: false }
+    );
+
     async function publishQuestion(event: any) {
         const formData = new FormData(event.target);
 
@@ -39,10 +44,27 @@
         });
 
         await question.publish();
+        event.target.reset();
+    }
+
+    async function upvoteQuestion(questionId: string) {
+        const upvote = new NDKEvent(ndk, {
+            kind: NDKKind.Text,
+            created_at: Math.floor(new Date().getTime() / 1000),
+            content: "+",
+            tags: [
+                ["t", "hb2023askNostr"],
+                ["e", questionId],
+            ],
+            pubkey: pubkey,
+        });
+
+        await upvote.publish();
     }
 
     onDestroy(() => {
         questions.unsubscribe();
+        upvotes.unsubscribe();
     });
 </script>
 
@@ -62,6 +84,16 @@
                         alt="avatar"
                         class="avatar"
                     />
+                    <button on:click={() => upvoteQuestion(question.id)} class="upvoteButton">
+                        <ArrowBigUp strokeWidth="0.75" size="64" />
+                        <span class="upvoteCount">
+                            {$upvotes.filter(
+                                (upvote) =>
+                                    upvote.getMatchingTags("e").length > 0 &&
+                                    upvote.getMatchingTags("e")[0][1] === question.id
+                            ).length}
+                        </span>
+                    </button>
                 </div>
                 <div>{question.content}</div>
             </div>
